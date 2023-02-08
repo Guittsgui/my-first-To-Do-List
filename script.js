@@ -54,10 +54,11 @@ function searchPost(e){
 
         for ( let tarefa of tarefasPostadas){
             let title = tarefa.querySelector('h2').innerText
-            tarefa.style.display ='none'
-            if (title.includes(searchValue)){
-                tarefa.style.display= 'flex'
-            } 
+            if (!title.includes(searchValue)){
+                tarefa.style.display= 'none'
+            }else{
+                tarefa.style.display = 'flex'
+            }
         }
     }else{
         for ( let tarefa of tarefasPostadas){
