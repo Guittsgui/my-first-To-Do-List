@@ -2,8 +2,13 @@ const sendButton = document.querySelector('.sendButton').addEventListener('click
 const inputText = document.querySelector('.inputText')
 const tarefaContainer = document.querySelector('.tarefaContainer')
 const inputSearch = document.querySelector('.inputsearch')
-
-
+const editContainer = document.querySelector('.editContainer')
+const btCancelar = document.querySelector('.btCancelar').addEventListener('click',cancelEdit)
+const btEditar = document.querySelector('.btEditar').addEventListener('click',sendEdit)
+const inputEditar = document.querySelector('.inputEditar')
+const textoEditar = document.querySelector('.textoEditar')
+let targetDiv 
+let target
 tarefaContainer.addEventListener('click', postActions)
 inputSearch.addEventListener('input',searchPost)
 function sendTarefa(){
@@ -37,9 +42,10 @@ function criaHtml(){
     return div
 }
 
+
 function postActions(e){
-    const target = e.target
-    const targetDiv = target.closest('div')
+    target = e.target
+    targetDiv = target.closest('div')
 
     if (target.id == 'feito'){
         targetDiv.classList.toggle('active')
@@ -49,6 +55,8 @@ function postActions(e){
     }
     if (target.id == 'edita'){
         tarefaContainer.style.display='none'
+        editContainer.style.display='flex'
+        textoEditar.innerText = targetDiv.querySelector('h2').innerText
     }
 }
 
@@ -70,4 +78,19 @@ function searchPost(e){
             tarefa.style.display = 'flex'
         }
     }
+}
+function cancelEdit(){
+    inputEditar.value = ''
+    tarefaContainer.style.display='block'
+    editContainer.style.display='none'
+}
+function sendEdit(e){
+    if(inputEditar.value != ""){
+        const newTarefa = inputEditar.value
+        targetDiv.querySelector('h2').innerText = newTarefa
+        inputEditar.value = ''
+        tarefaContainer.style.display='block'
+        editContainer.style.display='none'
+    }
+
 }
