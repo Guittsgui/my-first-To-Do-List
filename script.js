@@ -53,8 +53,8 @@ function searchPost(e){
     if ( searchValue != ''){
 
         for ( let tarefa of tarefasPostadas){
-            let title = tarefa.querySelector('h2').innerText
-            if (!title.includes(searchValue)){
+            let title = tarefa.querySelector('h2').innerText.toLowerCase()
+            if (!title.includes(searchValue.toLowerCase())){
                 tarefa.style.display= 'none'
             }else{
                 tarefa.style.display = 'flex'
