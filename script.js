@@ -2,6 +2,7 @@ const sendButton = document.querySelector('.sendButton').addEventListener('click
 const inputText = document.querySelector('.inputText')
 const tarefaContainer = document.querySelector('.tarefaContainer')
 
+tarefaContainer.addEventListener('click', postActions)
 
 function sendTarefa(){
     
@@ -9,7 +10,6 @@ function sendTarefa(){
         return
     }
     const div = criaHtml()
-    console.log(tarefaContainer)
     tarefaContainer.appendChild(div)
 }
 
@@ -21,9 +21,19 @@ function criaHtml(){
     div.appendChild(h2)
     const icon1 = document.createElement("img")
     icon1.setAttribute('src','img/feito.png')
+    icon1.setAttribute('id','feito')
     div.appendChild(icon1)
     const icon2 = document.createElement("img")
     icon2.setAttribute('src','img/apaga.png')
+    icon2.setAttribute('id','apaga')
     div.appendChild(icon2)
     return div
+}
+
+function postActions(e){
+    const target = e.target
+    const targetDiv = target.
+    if (target.id == 'feito'){
+
+    }
 }

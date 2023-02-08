@@ -85,15 +85,22 @@ body{
     background-color: aliceblue;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     border-radius: 20px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.753);
     margin-bottom: 5px;
 }
+.t1 h2{
+    width: 600px;
+}
 .t1 img{
     height: 45px;
+    margin-right: 10px;
 }
 .t1 img:hover{
     cursor: pointer;
+}
+.feita{
+    
 }
 
