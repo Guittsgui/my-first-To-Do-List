@@ -11,6 +11,7 @@ function sendTarefa(){
     }
     const div = criaHtml()
     tarefaContainer.appendChild(div)
+    inputText.value = ''
 }
 
 function criaHtml(){
@@ -32,8 +33,10 @@ function criaHtml(){
 
 function postActions(e){
     const target = e.target
-    const targetDiv = target.
+    const targetDiv = target.closest('div')
     if (target.id == 'feito'){
-
+        targetDiv.classList.toggle('active')
+    }else{
+       targetDiv.remove()
     }
 }
