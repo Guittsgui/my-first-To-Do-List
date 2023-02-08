@@ -14,7 +14,6 @@ function sendTarefa(){
     const div = criaHtml()
     tarefaContainer.appendChild(div)
     inputText.value = ''
-
 }
 
 function criaHtml(){
@@ -27,6 +26,10 @@ function criaHtml(){
     icon1.setAttribute('src','img/feito.png')
     icon1.setAttribute('id','feito')
     div.appendChild(icon1)
+    const icon3 = document.createElement("img")
+    icon3.setAttribute('src','img/editar.png')
+    icon3.setAttribute('id','edita')
+    div.appendChild(icon3)
     const icon2 = document.createElement("img")
     icon2.setAttribute('src','img/apaga.png')
     icon2.setAttribute('id','apaga')
@@ -37,19 +40,21 @@ function criaHtml(){
 function postActions(e){
     const target = e.target
     const targetDiv = target.closest('div')
+
     if (target.id == 'feito'){
         targetDiv.classList.toggle('active')
-    }else{
-       targetDiv.remove()
+    }
+    if (target.id == 'apaga'){
+        targetDiv.remove()
+    }
+    if (target.id == 'edita'){
+        tarefaContainer.style.display='none'
     }
 }
 
 function searchPost(e){
-
     const searchValue = inputSearch.value
-    let tarefasPostadas = tarefaContainer.querySelectorAll('.t1')
-  
-    
+    let tarefasPostadas = tarefaContainer.querySelectorAll('.t1')  
     if ( searchValue != ''){
 
         for ( let tarefa of tarefasPostadas){
@@ -65,6 +70,4 @@ function searchPost(e){
             tarefa.style.display = 'flex'
         }
     }
-
-
 }
