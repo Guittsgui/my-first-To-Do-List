@@ -48,17 +48,21 @@ function searchPost(e){
 
     const searchValue = inputSearch.value
     let tarefasPostadas = tarefaContainer.querySelectorAll('.t1')
-    let titulosTarefas = []
-    for ( let i of tarefasPostadas){
-        titulosTarefas.push(i.querySelector('h2'))
-    }
+  
     
-    if (searchValue === ''){
-        for ( i of tarefasPostadas){
-            i.style.display = 'block'
+    if ( searchValue != ''){
+
+        for ( let tarefa of tarefasPostadas){
+            let title = tarefa.querySelector('h2').innerText
+            tarefa.style.display ='none'
+            if (title.includes(searchValue)){
+                tarefa.style.display= 'flex'
+            } 
         }
     }else{
-        
+        for ( let tarefa of tarefasPostadas){
+            tarefa.style.display = 'flex'
+        }
     }
 
 
