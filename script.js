@@ -1,9 +1,11 @@
 const sendButton = document.querySelector('.sendButton').addEventListener('click',sendTarefa)
 const inputText = document.querySelector('.inputText')
 const tarefaContainer = document.querySelector('.tarefaContainer')
+const inputSearch = document.querySelector('.inputsearch')
+
 
 tarefaContainer.addEventListener('click', postActions)
-
+inputSearch.addEventListener('input',searchPost)
 function sendTarefa(){
     
     if (inputText.value == ''){
@@ -12,6 +14,7 @@ function sendTarefa(){
     const div = criaHtml()
     tarefaContainer.appendChild(div)
     inputText.value = ''
+
 }
 
 function criaHtml(){
@@ -39,4 +42,24 @@ function postActions(e){
     }else{
        targetDiv.remove()
     }
+}
+
+function searchPost(e){
+
+    const searchValue = inputSearch.value
+    let tarefasPostadas = tarefaContainer.querySelectorAll('.t1')
+    let titulosTarefas = []
+    for ( let i of tarefasPostadas){
+        titulosTarefas.push(i.querySelector('h2'))
+    }
+    
+    if (searchValue === ''){
+        for ( i of tarefasPostadas){
+            i.style.display = 'block'
+        }
+    }else{
+        
+    }
+
+
 }
